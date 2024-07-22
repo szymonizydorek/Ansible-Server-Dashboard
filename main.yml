@@ -2,6 +2,8 @@
 - name: Install and configure webserver
   hosts: web01
   become: yes
+  vars_files:
+   - vars/main.yml  
   tasks:
     - name: Install Httpd on CentOS
       yum:
@@ -9,18 +11,45 @@
         state: present
       when: ansible_distribution == "CentOS"
 
-    - name: Display httpd status
+    - name: Display Httpd status
       debug:
-        msg: "httpd is active and running."
+        msg: "Httpd server is active and running."
       when: ansible_distribution == "CentOS"
 
-    - name: Copy index.html
-      copy:
+    - name: Remove old script2.sh if it exists
+      file:
+        path: "{{ web_server_root }}/script2.sh"
+        state: absent
+      when: ansible_distribution == "CentOS"    
+
+    - name: Remove old styles.css if it exists
+      file:
+        path: "{{ web_server_root }}/styles.css"
+        state: absent
+      when: ansible_distribution == "CentOS"
+
+          
+    - name: Deploy CGI script using template 
+      template:
         # src: ./files/index.html
-        src: ./templates/script2.sh
-        dest: /var/www/cgi-bin
+        src: "{{ script_source }}"
+        dest: "{{ script_destination }}"
         owner: root
         group: root
         mode: '0777'
         backup: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Deploy CSS file
+      copy:
+        src: ./templates/styles.css
+        dest: "{{ web_server_root }}/styles.css"
+        owner: root
+        group: root
+        mode: '0777'
+      when: ansible_distribution == "CentOS"
+
+    - name: Display Servce Status
+      debug:
+        msg: "Go to http://3.88.210.169/cgi-bin/script2.sh."
       when: ansible_distribution == "CentOS"

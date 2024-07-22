@@ -1,0 +1,15 @@
+body {
+  font-family: 'Avenir', sans-serif;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #333;
+  margin: 20px;
+}
+
+h3 {
+  color: #fff;
+}
+
+p {
+  color: #fff;
+}
+

@@ -1,0 +1,3 @@
+web_server_root: "/var/www/cgi-bin"
+script_source: "templates/script2.sh.j2"
+script_destination: "{{ web_server_root }}/script2.sh"

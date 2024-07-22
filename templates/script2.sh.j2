@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+#test
+echo "Content-type: text/html"
+echo ""
+
+
+# HTML output linking to external CSS
+echo "<html>"
+echo "<head>"
+echo "<title>Server Statistics</title>"
+echo "<link rel='stylesheet' type='text/css' href='/styles.css'>"
+echo "Running as {{ ansible_user }}"
+
+uptime=$(uptime -p)
+memory=$(free -m | awk 'NR==2 {print $2, $3, $7}')
+load=$(cat /proc/loadavg)
+
+echo "<h3>UptimDDe</h3>"
+echo "<p>$uptime</p>"
+
+
+echo "<h3>Memory</h3>"
+echo "<i>Total, Free, Available</i>"
+echo "<p>$memory</p>"
+
+
+echo "<h3>Load avg</h3>"
+echo "<p> $load </p>"
+
+echo "</body></html>"
