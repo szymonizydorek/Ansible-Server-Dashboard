@@ -1,0 +1,26 @@
+---
+- name: Install and configure webserver
+  hosts: web01
+  become: yes
+  tasks:
+    - name: Install Httpd on CentOS
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: Display httpd status
+      debug:
+        msg: "httpd is active and running."
+      when: ansible_distribution == "CentOS"
+
+    - name: Copy index.html
+      copy:
+        # src: ./files/index.html
+        src: ./templates/script2.sh
+        dest: /var/www/cgi-bin
+        owner: root
+        group: root
+        mode: '0777'
+        backup: yes
+      when: ansible_distribution == "CentOS"

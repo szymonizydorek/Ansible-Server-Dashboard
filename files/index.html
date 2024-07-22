@@ -1,0 +1,22 @@
+<html>
+<head><title>Server Statistics</title></head>
+<body>
+<h1>Server Statistics</h1>
+
+<h2>CPU Usage</h2>
+echo "<pre>"
+top -b -n1 | head -5
+echo "</pre>"
+
+echo "<h2>Disk Usage</h2>"
+echo "<pre>"
+df -h
+echo "</pre>"
+
+echo "<h2>Memory Usage</h2>"
+echo "<pre>"
+free -m
+echo "</pre>"
+
+echo "</body>"
+echo "</html>"
