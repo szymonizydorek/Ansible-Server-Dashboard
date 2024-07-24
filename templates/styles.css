@@ -1,15 +1,19 @@
+/* Basic body styling */
 body {
-  font-family: 'Avenir', sans-serif;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
-  color: #333;
-  margin: 20px;
+    font-family: 'Avenir', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: #333;
+    margin: 20px;
 }
 
-h3 {
-  color: #fff;
-}
 
-p {
-  color: #fff;
+h2 {
+    font-size: 15em; /* Large font size */
+    margin: 0; /* Remove default margin */
+    color: #fff; /* White text color */
+    position: absolute; /* Absolute positioning */
+    top: 50%; /* Move the top edge to the middle */
+    left: 50%; /* Move the left edge to the middle */
+    transform: translate(-50%, -50%); /* Shift it back by half its width and height */
 }
 

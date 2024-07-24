@@ -3,7 +3,6 @@
 echo "Content-type: text/html"
 echo ""
 
-
 # HTML output linking to external CSS
 echo "<html>"
 echo "<head>"
@@ -15,16 +14,8 @@ uptime=$(uptime -p)
 memory=$(free -m | awk 'NR==2 {print $2, $3, $7}')
 load=$(cat /proc/loadavg)
 
-echo "<h3>UptimDDe</h3>"
-echo "<p>$uptime</p>"
+echo "<h2>System Statistics</h2>"
 
 
-echo "<h3>Memory</h3>"
-echo "<i>Total, Free, Available</i>"
-echo "<p>$memory</p>"
-
-
-echo "<h3>Load avg</h3>"
-echo "<p> $load </p>"
-
-echo "</body></html>"
+echo "</body>"
+echo "</html>"

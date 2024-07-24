@@ -51,5 +51,5 @@
 
     - name: Display Servce Status
       debug:
-        msg: "Go to http://3.88.210.169/cgi-bin/script2.sh."
+        msg: "Go to http://<publicIP>/cgi-bin/script2.sh"
       when: ansible_distribution == "CentOS"
